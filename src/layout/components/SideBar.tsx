@@ -43,7 +43,7 @@ const SideBar: FunctionComponent<SideBarProps> = ({ anchor, open, variant, items
       anchor={anchor}
       open={open}
       variant={variant}
-      {...(isRenderedAsDrawer && { closeAfterTransition: true })} // Solves "Blocked aria-hidden on an element..." error
+      closeAfterTransition={isRenderedAsDrawer} // Solves "Blocked aria-hidden on an element..." error
       PaperProps={{
         sx: {
           width: SIDE_BAR_WIDTH,
