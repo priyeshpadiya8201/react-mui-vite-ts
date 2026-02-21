@@ -28,7 +28,7 @@
     "copy-to-clipboard": "latest",
     "react": "^19",
     "react-dom": "^19",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "latest"
   },
   "devDependencies": {
     "@eslint/js": "^9",
@@ -40,24 +40,23 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/react-router-dom": "latest",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "latest",
     "@vitejs/plugin-react-swc": "latest",
-    "eslint": "^10.0.1",
+    "eslint": "latest",
     "eslint-plugin-react-hooks": "^5",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
-    "jest": "^25.0.0",
+    "jest": "latest",
     "jest-environment-jsdom": "latest",
     "jsdom": "latest",
     "prettier": "latest",
-    "ts-jest": "^27.0.3",
+    "ts-jest": "latest",
     "ts-jest-mock-import-meta": "latest",
     "ts-node": "latest",
-    "typescript": "^5.0.0",
-    "typescript-eslint": "^8.36.0",
+    "typescript": "^5",
+    "typescript-eslint": "latest",
     "vite": "^6",
     "vite-tsconfig-paths": "latest",
-    "vitest": "^4.0.18"
+    "vitest": "latest"
   }
 }
