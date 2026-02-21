@@ -11,20 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      # Setup Node with caching
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
       
-      # Install only production dependencies
+      # Use --legacy-peer-deps or update versions
       - name: Install dependencies
-        run: npm ci --omit=dev
+        run: npm ci --legacy-peer-deps
       
       - name: Build
         run: npm run build
       
-      # Deploy using AWS CLI (faster)
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -34,11 +32,4 @@ jobs:
       
       - name: Deploy to S3
         run: |
-          aws s3 sync dist/ s3://$react-mui-vite \
-            --delete \
-            --cache-control "public, max-age=31536000" \
-            --exclude "index.html"
-          
-          # Set shorter cache for index.html
-          aws s3 cp dist/index.html s3://$react-mui-vite/index.html \
-            --cache-control "public, max-age=0, must-revalidate"
+          aws s3 sync dist/ s3://$react-mui-vite --delete
