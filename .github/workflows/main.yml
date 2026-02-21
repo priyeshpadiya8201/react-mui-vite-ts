@@ -33,11 +33,6 @@ jobs:
           node-version: '18'
           cache: 'npm'
       
-<<<<<<< HEAD
-      # Use --legacy-peer-deps or update versions
-      - name: Install dependencies
-        run: npm ci --legacy-peer-deps
-=======
       # ✅ FIX 1: Add --legacy-peer-deps for Cypress version conflict
       - name: ⚡ Install dependencies
         run: |
@@ -46,7 +41,6 @@ jobs:
             --no-audit \
             --no-fund \
             --legacy-peer-deps
->>>>>>> 15722301eb6b9f62127f6972c8152a677987cdcc
       
       # ✅ FIX 2: Skip TypeScript checking if there are errors (allow build to continue)
       - name: ⚡ Build Vite app
