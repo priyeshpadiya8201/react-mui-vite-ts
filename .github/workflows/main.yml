@@ -124,11 +124,9 @@ jobs:
       # ====================================================================
       - name: ⚡ Sync to S3 (Assets)
         run: |
-          aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }}/assets/ \
+          aws s3 sync dist/assets/ s3://${{ secrets.AWS_S3_BUCKET }}/assets/ \
             --delete \
             --cache-control "public, max-age=31536000, immutable" \
-            --exclude "index.html" \
-            --exclude "*.html" \
             --no-progress
       
       # ====================================================================
@@ -143,8 +141,9 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }}/ \
             --delete \
-            --exclude "*" \
+            --exclude "assets/*" \
             --include "*.html" \
+            --include "*.webmanifest" \
             --cache-control "public, max-age=0, must-revalidate" \
             --content-type "text/html" \
             --no-progress
