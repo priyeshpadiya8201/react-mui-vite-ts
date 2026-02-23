@@ -11,7 +11,7 @@ on:
 
 concurrency:
   group: deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -49,7 +49,7 @@ jobs:
           NODE_ENV: production
           VITE_SOURCEMAP: 'false'
           CI: 'true'
-        continue-on-error: true
+        continue-on-error: false
       
       - name: ⚡ Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -60,7 +60,7 @@ jobs:
       
       - name: ⚡ Sync to S3 (Assets)
         run: |
-          aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }}/assets/ \
+          aws s3 sync dist/assets/ s3://${{ secrets.AWS_S3_BUCKET }}/assets/ \
             --delete \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
@@ -71,7 +71,7 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }}/ \
             --delete \
-            --exclude "*" \
+            --exclude "assets/*" \
             --include "*.html" \
             --cache-control "public, max-age=0, must-revalidate" \
             --content-type "text/html" \
